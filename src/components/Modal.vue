@@ -2,10 +2,10 @@
   <teleport to="body">
     <div class="modal">
       <h1>
-        <slot name="title"/>
+        {{ title }}
       </h1>
       <slot/>
-      <button class="btn">hide modal</button>
+      <button @click="handleButtonClick" class="btn">hide modal</button>
     </div>
   </teleport>
 </template>
@@ -15,6 +15,17 @@ import {useSlots} from "vue";
 
 const slots = useSlots()
 
+const props = defineProps({
+  title: {
+    type: String,
+    default: '123'
+  }
+})
+const emit = defineEmits(['hideModal'])
+
+const handleButtonClick = () => {
+  emit('hideModal')
+}
 </script>
 
 <style scoped>

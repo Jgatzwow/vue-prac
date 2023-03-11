@@ -1,8 +1,7 @@
 <template>
   <div>
     <button class="btn" @click="toggleModal">show modal</button>
-    <modal v-if="showModal">
-      <template v-slot:title>This is my Title</template>
+    <modal v-if="showModal" title="My modal title (via prop)" @hideModal="toggleModal">
       <p>Some text children like in react</p>
     </modal>
   </div>
