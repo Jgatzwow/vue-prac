@@ -10,15 +10,15 @@
     <div>This counter is {{ oddOrEven }}</div>
     <div class="edit">
       <h3> Edit counters Title</h3>
-      <input type="text" v-model="counterData.title ">
+      <input type="text" v-model="counterData.title" v-autofocus>
     </div>
   </div>
 </template>
 
 <script setup>
 
-import {reactive, computed, watch} from "vue";
-
+import {reactive, computed, watch, onMounted} from "vue";
+import {vAutofocus} from "@/directives/vAutofocus";
 /*const counter = ref(0)
 const counterTitle = ref('tle')*/
 
@@ -27,6 +27,7 @@ const oddOrEven = computed(() => {
   return 'odd'
 })
 const appTitle = 'My counter App'
+
 
 const counterData = reactive({
   count: 10,
