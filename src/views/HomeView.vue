@@ -17,7 +17,7 @@
 
 <script setup>
 
-import {reactive, computed, watch, onMounted, ref} from "vue";
+import {reactive, computed, watch, onMounted, ref, nextTick} from "vue";
 import {vAutofocus} from "@/directives/vAutofocus";
 /*const counter = ref(0)
 const counterTitle = ref('tle')*/
@@ -40,8 +40,11 @@ watch(() => counterData.count, (newCount) => {
   if (newCount === 20) alert('someMSG')
 })
 
-const increaseCounter = (val) => {
+const increaseCounter = async (val) => {
   counterData.count += val
+  await nextTick(()=> {
+    console.log('do smth')
+  })
 }
 
 const decreaseCounter = (val) => {

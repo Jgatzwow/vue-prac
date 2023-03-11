@@ -2,6 +2,7 @@
   <nav>
     <router-link to="/">Home</router-link>
     <router-link to="/posts">Posts</router-link>
+    <router-link to="/modals">Modals</router-link>
   </nav>
   <router-view/>
 </template>
