@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>{{ appTitle }}</h2>
+    <h2 ref="appTitleRef">{{ appTitle }}</h2>
     <h3>{{ counterData.title }}</h3>
     <div class="wrapper">
       <button @click="decreaseCounter(1)" class="btn">-</button>
@@ -17,7 +17,7 @@
 
 <script setup>
 
-import {reactive, computed, watch, onMounted} from "vue";
+import {reactive, computed, watch, onMounted, ref} from "vue";
 import {vAutofocus} from "@/directives/vAutofocus";
 /*const counter = ref(0)
 const counterTitle = ref('tle')*/
@@ -28,12 +28,14 @@ const oddOrEven = computed(() => {
 })
 const appTitle = 'My counter App'
 
-
+const appTitleRef = ref(null)
 const counterData = reactive({
   count: 10,
   title: 'Counter title'
 })
-
+onMounted(() => {
+  appTitleRef.value
+})
 watch(() => counterData.count, (newCount) => {
   if (newCount === 20) alert('someMSG')
 })
