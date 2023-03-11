@@ -1,14 +1,19 @@
 <template>
   <teleport to="body">
     <div class="modal">
-      <h1>this is a modal</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, sunt?</p>
+      <h1>
+        <slot name="title"/>
+      </h1>
+      <slot/>
       <button class="btn">hide modal</button>
     </div>
   </teleport>
 </template>
 
-<script>
+<script setup>
+import {useSlots} from "vue";
+
+const slots = useSlots()
 
 </script>
 
